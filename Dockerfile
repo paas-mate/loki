@@ -1,15 +1,15 @@
-FROM ttbb/base
+FROM shoothzj/base
 
-WORKDIR /opt/sh/loki
+WORKDIR /opt/loki
 
 ARG TARGETARCH
 
-RUN wget https://github.com/grafana/loki/releases/download/v2.6.1/loki-linux-$TARGETARCH.zip  && \
+RUN wget https://github.com/grafana/loki/releases/download/v2.7.0/loki-linux-$TARGETARCH.zip  && \
     unzip loki-linux-$TARGETARCH.zip && \
     mv loki-linux-$TARGETARCH loki && \
     rm -rf loki-linux-$TARGETARCH.zip
 
-ENV LOKI_HOME=/opt/sh/loki
+ENV LOKI_HOME=/opt/loki
 
-ENTRYPOINT ["/opt/sh/loki/loki"]
-CMD ["-config.file=/opt/sh/loki/config/config.yml"]
+ENTRYPOINT ["/opt/loki/loki"]
+CMD ["-config.file=/opt/loki/config/config.yml"]
